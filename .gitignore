@@ -7,6 +7,7 @@
 /.vagrant
 Homestead.json
 Homestead.yaml
+laravel.log
 npm-debug.log
 yarn-error.log
 .env
