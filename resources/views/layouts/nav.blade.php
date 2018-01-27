@@ -21,6 +21,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <li><a href="{{ route('notices.index') }}">Home</a></li>
+                        <li><a href="{{ route('notices.create') }}">New Notice</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
