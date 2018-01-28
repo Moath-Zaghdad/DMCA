@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\{PrepareNoticeRequest};
+use App\{Provider};
 
 class NoticesController extends Controller
 {
@@ -31,10 +33,25 @@ class NoticesController extends Controller
      */
     public function create()
     {
-        // get list if providers
+        // get list of providers
+        $providers = Provider::pluck('name', 'id');
+
         //load a view to create a new notice
-        return view('notices.create');
+        return view('notices.create', compact('providers'));
     }
+
+    /**
+     * Validate the request before submitting
+     * 
+     * @param  \App\Http\Requests\PrepareNoticeRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function confirm(PrepareNoticeRequest $request)
+    {
+        return $request->all();
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

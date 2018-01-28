@@ -8,3 +8,7 @@ It's a Laravel WebSite that allows users to create *`Digital Millennium Copyrigh
 #### Configuration
 	
 	Create the *sqlite* file `/DMCA/database/database.sqlite`
+	
+	Run	*`php artisan migrate --seed`*
+
+	
