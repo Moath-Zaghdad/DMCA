@@ -33,10 +33,8 @@ class NoticesController extends Controller
      */
     public function create()
     {
-        // get list of providers
         $providers = Provider::pluck('name', 'id');
 
-        //load a view to create a new notice
         return view('notices.create', compact('providers'));
     }
 
@@ -48,7 +46,14 @@ class NoticesController extends Controller
      */
     public function confirm(PrepareNoticeRequest $request)
     {
-        return $request->all();
+        $data = $request->all() + [
+            'name' => auth()->user()->name,
+            'email' => auth()->user()->email,
+        ];
+        $template = view()->file(app_path('Http/Templates/dmca.blade.php'), $data);
+        session()->flash('dmca', $data);
+
+        return view('notices.confirm',compact('template'));
     }
 
 
@@ -61,7 +66,8 @@ class NoticesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = session()->get('dmca');
+        // $request->template;
     }
 
     /**

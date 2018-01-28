@@ -38,7 +38,7 @@
 
 	<div id="form-group">
 		<label>And, finally, it might help to provide some extra information related to this DMCA notice.</label>
-		<textarea name="original_descrioption" cols="30" rows="5" class="form-control">{{ old('original_descrioption') }}</textarea>
+		<textarea name="original_description" cols="30" rows="5" class="form-control">{{ old('original_description') }}</textarea>
 	</div>
 	<br>
 

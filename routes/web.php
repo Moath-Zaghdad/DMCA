@@ -9,7 +9,7 @@ Route::get('/', 'PagesController@home');
  * Notices
  */
 Route::resource('notices', 'NoticesController', ['only' => [
-    'index', 'create'
+    'index', 'create', 'store'
 ]]);
 Route::post('/notices/confirm', 'NoticesController@confirm')->name('notices.confirm');
 
