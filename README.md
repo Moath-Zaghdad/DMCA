@@ -19,9 +19,9 @@ php artisan serv
 ```
 
 ## The Route List
-+----------+------------------------+------------------+------------------------------------------------------------------------+--------------+
+
 | Method   | URI                    | Name             | Action                                                                 | Middleware   |
-+----------+------------------------+------------------+------------------------------------------------------------------------+--------------+
+| :------- | :--------------------- | :--------------- | ---------------------------------------------------------------------- | :----------- |
 | GET|HEAD | /                      |                  | App\Http\Controllers\PagesController@home                              | web          |
 | GET|HEAD | api/user               |                  | Closure                                                                | api,auth:api |
 | GET|HEAD | home                   | home             | App\Http\Controllers\HomeController@index                              | web,auth     |
@@ -38,7 +38,6 @@ php artisan serv
 | GET|HEAD | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
 | GET|HEAD | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
 | POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest    |
-+----------+------------------------+------------------+------------------------------------------------------------------------+--------------+
 
 
 
