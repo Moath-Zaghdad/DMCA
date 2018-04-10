@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+	/**
+	 * A user may create many DMCA notices.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relation\HasMany
+	 */
+	public function notices()
+	{
+		return $this->hasMany(Notice::class);
+	}
 }

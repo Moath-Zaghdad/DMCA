@@ -24,7 +24,7 @@ class PrepareNoticeRequest extends FormRequest
     public function rules()
     {
         return [
-            'provider_id'       =>  'required',
+            'provider_id'       =>  'required|exists:providers,id',
             'original_link'     =>  'required|url',
             'infringing_link'   =>  'required|url',
             'infringing_title'  =>  'required',
