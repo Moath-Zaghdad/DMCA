@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\{PrepareNoticeRequest};
 use App\{Provider, Notice};
 use Auth;
+use Mail;
 
 class NoticesController extends Controller
 {
@@ -67,9 +68,15 @@ class NoticesController extends Controller
      */
     public function store(Request $request)
     {
+	$notice = $this->createNotice($request);
 
-	$this->createNotice($request);
+	Mail::send('emails.dmca', compact('notice'), function($message)use ($notice) {
+		$message->to($notice->getRecipientEmail())
+			->from($notice->getOwnerEmail())
+			->subject('DMCA Notice');
 
+	});
+	
 	return redirect('notices');
     }
 
@@ -84,7 +91,9 @@ class NoticesController extends Controller
 
 	$notice = Notice::open($data)->useTemplate($request->template);
 
-	Auth::user()->notices()->save($notice);
+	$notice = Auth::user()->notices()->save($notice);
+
+	return $notice;
     }
     
     /**

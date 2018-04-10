@@ -42,4 +42,37 @@ class Notice extends Model
 		$this->template = $template;
 		return $this;
 	}
+
+	/**
+	 * A notice is created by a user
+	 */
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+
+	/**
+	 * A notice belongs to a recipient/provider.
+	 */
+	public function recipient()
+	{
+		return $this->belongsTo(Provider::class,'provider_id');
+	}
+
+	/**
+	 * Get the email for the recipient of the DMCA
+	 * @return string
+	 */
+	public function getRecipientEmail()
+	{
+		return $this->recipient->copyright_email;
+	}
+	/**
+	 * Get the email address if the owner ofthe notice.
+	 * @return string
+	 */
+	public function getOwnerEmail()
+	{
+		return $this->user->email;
+	}
 }
