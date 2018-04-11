@@ -22,21 +22,21 @@ php artisan serv
 
 | Method    | URI                    | Middleware   |
 | :-------- | :--------------------- | :----------- |
-| GET|HEAD  | /                      | web          |
-| GET|HEAD  | home                   | web,auth     |
+| GET\|HEAD | /                      | web          |
+| GET\|HEAD | home                   | web,auth     |
 | GET|HEAD  | login                  | web,guest    |
 | POST      | login                  | web,guest    |
 | POST      | logout                 | web          |
 | POST      | notices                | web,auth     |
-| GET|HEAD  | notices                | web,auth     |
+| GET\|HEAD | notices                | web,auth     |
 | POST      | notices/confirm        | web,auth     |
-| GET|HEAD  | notices/create         | web,auth     |
-| PUT|PATCH | notices/{notice}       | web,auth     |
+| GET\|HEAD | notices/create         | web,auth     |
+| PUT\|PATCH| notices/{notice}       | web,auth     |
 | POST      | password/email         | web,guest    |
-| GET|HEAD  | password/reset         | web,guest    |
+| GET\|HEAD | password/reset         | web,guest    |
 | POST      | password/reset         | web,guest    |
-| GET|HEAD  | password/reset/{token} | web,guest    |
-| GET|HEAD  | register               | web,guest    |
+| GET\|HEAD | password/reset/{token} | web,guest    |
+| GET\|HEAD | register               | web,guest    |
 | POST      | register               | web,guest    |
 
 
@@ -46,6 +46,8 @@ php artisan serv
 ![Empty Notices](notices_empty.png)
 
 ![Create New DMCA Request](create.png)
+
+![Confirm DMCA Request](confirm.png)
 
 ![Created](notice.png)
 
