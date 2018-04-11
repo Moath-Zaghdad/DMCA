@@ -25,7 +25,8 @@ class NoticesController extends Controller
      */
     public function index()
     {
-        return Auth::user()->notices;
+	    $notices = Auth::user()->notices()->latest()->get();
+	    return view('notices.index', compact('notices'));
     }
 
     /**
@@ -52,7 +53,8 @@ class NoticesController extends Controller
             'name' => auth()->user()->name,
             'email' => auth()->user()->email,
         ];
-        $template = view()->file(app_path('Http/Templates/dmca.blade.php'), $data);
+        //$template = view()->file(app_path('Http/Templates/dmca.blade.php'), $data);
+        $template = view('Templates.dmca', compact('data'));
         session()->flash('dmca', $data);
 
         return view('notices.confirm',compact('template'));
@@ -77,6 +79,8 @@ class NoticesController extends Controller
 
 	});
 	
+	flash('Your DMCA notice has been deliverd!')->success();
+
 	return redirect('notices');
     }
 
@@ -125,9 +129,11 @@ class NoticesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Notice $notice, Request $request)
     {
-        //
+	    $isRemoved = $request->has('content_removed');
+	    $notice->update(['content_removed' => $isRemoved]);
+	    return redirect()->back();//$notice;
     }
 
     /**

@@ -15,12 +15,17 @@
 </head>
 <body>
     <div id="app">
-        @include("layouts.nav")
+        @include ("layouts.nav")
+	@include ('flash::message')
         <div class="container">
             @yield('content')
         </div>
     </div>
-
+     <!--
+	     <div class="flash">
+		     Updated!
+	     </div>
+     -->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
