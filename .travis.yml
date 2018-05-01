@@ -16,10 +16,10 @@ before_install:
   - mysql -e 'CREATE DATABASE dmca_test;'
 
 script:
-  - phpunit
+  - vendor/bin/phpunit
 
 services:
   - mysql
 
 notifications:
-  email: false
+  email: true
